@@ -1,0 +1,23 @@
+{
+  "name": "smarthome-v2",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "6.6.x"
+  },
+  "scripts": {
+    "start": "node --max_old_space_size=64 bin/www --production",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongodb": "^2.2.10"
+  },
+  "devDependencies": {
+    "express-raml-store": "^1.2.2",
+    "mocha": "^3.1.2",
+    "should": "^8.2.1",
+    "supertest": "^1.1.0"
+  }
+}

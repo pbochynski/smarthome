@@ -1,0 +1,10 @@
+---
+applications:
+- name: smarthome-svc
+  memory: 128M
+  host: smarthome-svc
+  domain: eu-gb.mybluemix.net
+  buildpack: https://github.com/heroku/heroku-buildpack-nodejs
+  command: npm start
+  env:
+    MONGO_URL: mongodb://user:pass@server:port/database

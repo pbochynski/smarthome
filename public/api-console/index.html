@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API Console</title>
+  <link href="styles/api-console-light-theme.css" rel="stylesheet" class="theme">
+  <raml-console src="raml/api-specification.raml" disable-raml-client-generator disable-theme-switcher/>
+
+</head>
+<body ng-app="ramlConsoleApp" ng-cloak class="raml-console-body">
+<raml-initializer>
+
+</raml-initializer>
+<script src="scripts/api-console-vendor.js"></script>
+<script src="scripts/api-console.js"></script>
+<script>
+  $.noConflict();
+  RAML.Settings.proxy = window.location.pathname.substring(0,window.location.pathname.indexOf('/api-console/'));
+</script>
+</body>
+</html>

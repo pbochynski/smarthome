@@ -1,0 +1,132 @@
+#%RAML 0.8
+---
+title: Smarthome
+version: v1
+baseUri: /
+mediaType: application/json
+
+
+traits:
+- !include https://api.yaas.io/patterns/v2/trait-oauth2.yaml
+
+schemas:
+
+  - resourceLocation:     !include https://api.yaas.io/patterns/v1/schema-resource-location.json
+    errorMessage:         !include https://api.yaas.io/patterns/v1/schema-error-message.json
+
+    greeting:          !include hello/greeting-schema.json
+
+/metrics:
+  get:
+  post:
+    queryParameters:
+      api_key:
+    body:
+      application/json:
+        example: |
+          {
+            "id": "123456",
+            "t": 22.5,
+            "vcc": 3.6
+          }
+/aliases:
+  get:
+  post:
+    body:
+      application/json:
+        example: |
+          {
+            "chipId": "123",
+            "name" : "living room"
+          }
+/regulator:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "state": "auto",
+                "temperature": 22.2,
+                "deviation": 0.1
+              }
+  post:
+    queryParameters:
+      state:
+        type: string
+        enum: ["on", "off", "auto"]
+      temperature:
+        type: number
+      deviation:
+        type: number
+      sensor:
+        type: string
+      preset:
+        type: string
+
+/heater:
+  get:
+    responses:
+      200:
+        body:
+          text/html:
+            example: "1"
+/presets:
+  post:
+    body:
+      application/json:
+        example: |
+          {
+            "id": "DAY",
+            "state": "auto",
+            "temperature": 21.4,
+            "deviation": 0.1
+          }
+    responses:
+      200:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "id": "DAY",
+                  "state": "auto",
+                  "temperature": 21.4,
+                  "deviation": 0.1
+                },
+                {
+                  "id": "NIGHT",
+                  "state": "auto",
+                  "temperature": 21.0,
+                  "deviation": 0.1
+                },
+                {
+                  "id": "OUT",
+                  "state": "auto",
+                  "temperature": 19.4,
+                  "deviation": 0.1
+                },
+                {
+                  "id": "ON",
+                  "state": "on",
+                },
+                {
+                  "id": "OF",
+                  "state": "off",
+                }
+              ]  
+  /{id}:
+    delete:
+      responses:
+        204:
+/thingspeak:
+  post:
+    queryParameters:
+      api_key:
+      start:
+        type: string
+        default: "2016-07-01"
