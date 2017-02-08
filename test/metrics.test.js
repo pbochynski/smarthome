@@ -19,7 +19,7 @@ describe('Metrics endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
-			.auth('user1', 'pass1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:"1",t:21.1, vcc:3.61, heater: 0})
 			.expect(200,done);
 	});
@@ -27,7 +27,7 @@ describe('Metrics endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
-			.auth('user1', 'pass1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:"2",t:21.2, vcc:3.62, heater: 1})
 			.expect(200,done);
 	});
@@ -36,7 +36,7 @@ describe('Metrics endpoint', function () {
 		request(app)
 			.get('/metrics')
 			.set('hybris-tenant','test')
-			.auth('user1', 'pass1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.end(function (err, res) {
@@ -59,7 +59,7 @@ describe('Metrics endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
-			.auth('user1', 'pass1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:'2',t:21.3, vcc:3.63, heater:0})
 			.expect(200,done);
 	});
@@ -68,7 +68,7 @@ describe('Metrics endpoint', function () {
 		request(app)
 			.get('/metrics')
 			.set('hybris-tenant','test')
-			.auth('user1', 'pass1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.end(function (err, res) {

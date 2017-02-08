@@ -15,9 +15,9 @@ var regulator = require('../modules/regulator');
 //
 //});
 
-regulator.connect(function(){
-	var stream = regulator.stats('pihome');
-	stream.pipe(process.stdout);
-	stream.on('finish',_ =>{regulator.disconnect()});
-
-});
+//regulator.connect(function(){
+//	var stream = regulator.stats('pihome');
+//	stream.pipe(process.stdout);
+//	stream.on('finish',_ =>{regulator.disconnect()});
+//
+//});

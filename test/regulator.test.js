@@ -12,6 +12,7 @@ describe('Regulator endpoint', function () {
 	it('should turn heater off', function (done) {
 		request(app)
 			.post('/regulator?state=off')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.set('hybris-tenant','test')
 			.send()
 			.expect(200, done);
@@ -19,6 +20,7 @@ describe('Regulator endpoint', function () {
 	it('should heater be off', function (done) {
 		request(app)
 			.get('/heater?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.expect('0', done);
@@ -27,12 +29,14 @@ describe('Regulator endpoint', function () {
 
 		request(app)
 			.post('/regulator?state=auto&temperature=21.4&deviation=0.1&sensor=1')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.set('hybris-tenant','test')
 			.expect(200,done);
 	});
 	it('should get regulator', function (done) {
 		request(app)
 			.get('/regulator')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.set('hybris-tenant','test')
 			.send()
 			.expect(200)
@@ -49,12 +53,14 @@ describe('Regulator endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:"1",t:21.1, vcc:3.61})
 			.expect(200,done);
 	});
 	it('should heater be on', function (done) {
 		request(app)
 			.get('/heater?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.expect('1', done);
@@ -63,12 +69,14 @@ describe('Regulator endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:"1",t:21.6, vcc:3.61})
 			.expect(200,done);
 	});
 	it('should heater be off', function (done) {
 		request(app)
 			.get('/heater?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.expect('0', done);
@@ -77,12 +85,14 @@ describe('Regulator endpoint', function () {
 
 		request(app)
 			.post('/metrics?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send({id:"1",t:21.31, vcc:3.61})
 			.expect(200,done);
 	});
 	it('should heater still be off', function (done) {
 		request(app)
 			.get('/heater?api_key=test')
+			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
 			.expect(200)
 			.expect('0', done);
