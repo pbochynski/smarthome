@@ -1,11 +1,11 @@
 
 var express = require('express');
+var basicAuth = require('express-basic-auth');
 var bodyParser = require('body-parser');
 var path = require('path');
 
 var apiConsole = require('./modules/api-console');
 
-// END OF METRICS CONFIGURATION
 
 var regulatorEndpoint = require('./routes/regulator-endpoint');
 
@@ -15,7 +15,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(basicAuth);
+
+function envUsers(){
+    var users = {};
+    users[process.env.BASIC_USER] = process.env.BASIC_PASS;
+    return users;
+}
+app.use(basicAuth({users:envUsers(), challenge: true}));
 
 app.use(regulatorEndpoint);
 
