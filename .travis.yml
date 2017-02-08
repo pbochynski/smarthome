@@ -15,3 +15,5 @@ deploy:
   script: cf-blue-green-travis
   on:
     branch: develop
+services:
+  - mongodb
