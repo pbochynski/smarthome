@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": "6.6.x"
+    "node": "6.9.x"
   },
   "scripts": {
     "start": "node --max_old_space_size=64 bin/www --production",
-    "test": "mocha"
+    "test": "mocha -t 5000"
   },
   "dependencies": {
     "body-parser": "^1.13.2",
