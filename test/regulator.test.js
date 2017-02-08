@@ -22,8 +22,7 @@ describe('Regulator endpoint', function () {
 			.get('/heater?api_key=test')
 			.auth(process.env.BASIC_USER, process.env.BASIC_PASS)
 			.send()
-			.expect(200)
-			.expect('0', done);
+			.expect(200, '0', done);
 	});
 	it('should set regulator', function (done) {
 
