@@ -14,6 +14,6 @@ deploy:
   provider: script
   script: cf-blue-green-travis
   on:
-    branch: develop
+    branch: master
 services:
   - mongodb
