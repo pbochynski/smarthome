@@ -18,14 +18,14 @@ if (process.env.MONGO_URL) {
     url = process.env.MONGO_URL;
 }
 var mongoDb;
-
+var connected = false;
 // Connect using MongoClient
 
 function disconnect() {
     mongoDb.close(true);
 }
 function connect(done) {
-    if (mongoDb) {
+    if (connected) {
         done();
         return;
     }
@@ -40,6 +40,7 @@ function connect(done) {
         }
         setConfig({key: "test", tenant: "test"})
             .then(_ => {
+                conncted = true;
                 if (done) {
                     done();
                 }
