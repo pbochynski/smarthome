@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
+apiConsole.addRoutesTo(app);
 
 function envUsers(){
     var users = {};
@@ -25,7 +26,6 @@ app.use(basicAuth({users:envUsers(), challenge: true}));
 
 app.use(regulatorEndpoint);
 
-apiConsole.addRoutesTo(app);
 
 
 module.exports = app;
