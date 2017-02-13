@@ -9,13 +9,6 @@ mediaType: application/json
 traits:
 - !include https://api.yaas.io/patterns/v2/trait-oauth2.yaml
 
-schemas:
-
-  - resourceLocation:     !include https://api.yaas.io/patterns/v1/schema-resource-location.json
-    errorMessage:         !include https://api.yaas.io/patterns/v1/schema-error-message.json
-
-    greeting:          !include hello/greeting-schema.json
-
 /metrics:
   get:
   post:
