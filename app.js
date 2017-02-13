@@ -15,10 +15,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/',regulatorEndpoint);
-
 apiConsole.addRoutesTo(app);
 
+app.use(regulatorEndpoint);
 
 module.exports = app;
