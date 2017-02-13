@@ -1,6 +1,6 @@
 
 exports.addRoutesTo = function addRoutesTo(app) {
-	app.use('/', function(req, res) {
+	app.get('/', function(req, res) {
 		res.redirect(basePath(req) + "/api-console/");
 	});
 };

@@ -1,6 +1,5 @@
 var express = require('express');
 var regulator = require('../modules/regulator');
-var basicAuth = require('express-basic-auth');
 
 
 function regulatorUpdate(req, res) {
@@ -56,14 +55,6 @@ function allAliases(req,res) {
     });
 
 }
-
-function envUsers(){
-    var users = {};
-    users[process.env.BASIC_USER] = process.env.BASIC_PASS;
-    return users;
-}
-router.use(basicAuth({users:envUsers(), challenge: true}));
-
 
 router.post('/aliases', newAlias);
 router.get('/aliases', allAliases);
